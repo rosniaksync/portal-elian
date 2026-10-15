@@ -1,0 +1,14 @@
+[
+  { "id": "agentes-ia", "name": "Agentes de IA", "description": "Agentes especializados para processos e áreas do Grupo Elian.", "url": "https://studio.elian.com.br/agentes-ia", "type": "interno", "icon": "robot", "active": true },
+  { "id": "elian-studio", "name": "Elian Studio", "description": "Criação de imagens e assistente corporativo.", "url": "https://studio.elian.com.br/", "type": "interno", "icon": "sparkles", "active": true },
+  { "id": "chatgpt", "name": "ChatGPT", "description": "Assistente de IA para criação, análise e produtividade.", "url": "https://chatgpt.com/", "type": "externo", "icon": "chat", "active": true },
+  { "id": "plaud", "name": "Plaud", "description": "Gravação, transcrição e organização de conversas.", "url": "https://www.plaud.com.br/login/", "type": "externo", "icon": "audio", "active": true },
+  { "id": "magnific", "name": "Magnific", "description": "Aprimoramento e ampliação de imagens com IA.", "url": "https://www.magnific.com/log-in?client_id=magnific&lang=pt", "type": "externo", "icon": "image", "active": true },
+  { "id": "envato-elements", "name": "Envato Elements", "description": "Recursos criativos, imagens, vídeos e templates.", "url": "https://elements.envato.com/pt-br/sign-in", "type": "externo", "icon": "shapes", "active": true },
+  { "id": "microsoft-365-chat", "name": "Microsoft 365 Chat", "description": "Assistente de IA integrado ao ambiente Microsoft 365.", "url": "https://m365.cloud.microsoft/chat", "type": "externo", "icon": "briefcase", "active": true },
+  { "id": "corrida-dos-campeoes", "name": "Corrida dos Campeões", "description": "Plataforma de performance comercial.", "url": "https://corrida-dos-campeoes.elian.com.br/", "type": "interno", "icon": "trophy", "active": true },
+  { "id": "gerenciador-de-deploys", "name": "Gerenciador de Deploys", "description": "Gestão de ambientes, workloads e implantações.", "url": "https://rancher.elian.com.br/", "type": "interno", "icon": "rocket", "active": true },
+  { "id": "showroom-digital", "name": "Showroom Digital", "description": "Criador de catálogo digital para apresentar produtos e coleções.", "url": "https://showroomdigital.elian.com.br/", "type": "interno", "icon": "store", "active": true },
+  { "id": "briefing-elian", "name": "Briefing Elian", "description": "Dados de coleções para decisões comerciais e de desenvolvimento.", "url": "https://briefing.elian.com.br/", "type": "interno", "icon": "clipboard", "active": true },
+  { "id": "reserva-refeicoes", "name": "Reserva de Refeições", "description": "Reserva de refeições integrada aos fluxos internos do Grupo Elian.", "url": "https://studio.elian.com.br/reserva-refeicao", "type": "interno", "icon": "meal", "active": true }
+]
