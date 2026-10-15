@@ -72,6 +72,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .site-shell {
+  --catalog-aside-width: clamp(128px, 14vw, 180px);
+  --catalog-aside-gap: clamp(16px, 2vw, 24px);
   width: min(1120px, calc(100% - 32px));
   height: 100vh;
   min-height: 0;
@@ -90,6 +92,12 @@ main {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+}
+
+.topbar,
+.intro {
+  width: calc(100% - var(--catalog-aside-width) - var(--catalog-aside-gap));
+  margin-left: calc(var(--catalog-aside-width) + var(--catalog-aside-gap));
 }
 
 .topbar {
@@ -271,23 +279,28 @@ h1 span {
   height: 100%;
   min-height: 0;
   position: relative;
-  display: block;
+  display: grid;
+  grid-template-columns: clamp(128px, 14vw, 180px) minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(16px, 2vw, 24px);
 }
 
 .mascot-frame {
-  position: absolute;
-  top: 0;
-  left: -264px;
-  width: 260px;
-  height: 390px;
+  position: sticky;
+  top: 18px;
+  width: 100%;
+  height: clamp(300px, 27vw, 390px);
+  min-height: 0;
   display: flex;
+  align-self: start;
   align-items: flex-start;
   justify-content: center;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .mascot-frame img {
   display: block;
+  width: 100%;
   width: 100%;
   height: 100%;
   max-height: none;
@@ -330,7 +343,7 @@ h1 span {
 .platform-grid {
   width: min(100%, 1055px);
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: 18px;
 }
 
@@ -928,6 +941,12 @@ dialog::backdrop {
     min-height: auto;
   }
 
+  .topbar,
+  .intro {
+    width: 100%;
+    margin-left: 0;
+  }
+
   .topbar {
     height: clamp(68px, 19.1vw, 84px);
   }
@@ -956,6 +975,7 @@ dialog::backdrop {
 
   .intro {
     align-items: stretch;
+    flex-direction: column;
     gap: clamp(12px, 2.9vw, 18px);
     padding: clamp(22px, 5.16vw, 32px) 0 clamp(20px, 4.5vw, 28px);
   }
@@ -1010,7 +1030,15 @@ dialog::backdrop {
     flex: 0 0 auto;
   }
 
-  .platform-showcase,
+  .platform-showcase {
+    height: auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: clamp(64px, 20vw, 104px) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(8px, 2.4vw, 14px);
+  }
+
   .catalog-content,
   .catalog-scroll {
     height: auto;
@@ -1025,13 +1053,30 @@ dialog::backdrop {
   }
 
   .mascot-frame {
-    display: none;
+    position: sticky;
+    top: 14px;
+    inset: auto;
+    width: 100%;
+    height: clamp(190px, 60vw, 280px);
+    min-height: 0;
+    display: flex;
+    align-self: start;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .mascot-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
   }
 
   .platform-grid {
     width: 100%;
     min-width: 0;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
     gap: clamp(10px, 1.94vw, 12px);
   }
 
@@ -1209,12 +1254,38 @@ dialog::backdrop {
   }
 }
 
-/* Tablet: conteúdo estático, sem mascote e com grade adaptável */
+/* Tablet: página com rolagem natural, mascote ao lado e grade adaptável */
 @media (min-width: 621px) and (max-width: 1024px) {
+  /* No tablet, a página inteira acompanha a rolagem. */
+  body {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow-y: auto;
+  }
+
   .site-shell {
     width: min(1120px, calc(100% - 32px));
+    height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
     padding-right: clamp(16px, 2.73vw, 28px);
     padding-left: clamp(16px, 2.73vw, 28px);
+  }
+
+  main {
+    min-height: auto;
+    flex: 0 0 auto;
+  }
+
+  .catalog {
+    flex: 0 0 auto;
+  }
+
+  .topbar,
+  .intro {
+    width: 100%;
+    margin-left: 0;
   }
 
   .topbar {
@@ -1242,36 +1313,57 @@ dialog::backdrop {
   }
 
   .platform-showcase {
-    display: block;
+    height: auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: clamp(100px, 16vw, 150px) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(12px, 2vw, 20px);
   }
 
   .mascot-frame {
-    display: none;
+    position: sticky;
+    top: 18px;
+    inset: auto;
+    width: 100%;
+    height: clamp(260px, 46vw, 390px);
+    min-height: 0;
+    display: flex;
+    align-self: start;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .mascot-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
   }
 
   .catalog-content {
-    height: 100%;
+    height: auto;
   }
 
   .catalog-scroll {
-    height: 100%;
+    height: auto;
     min-height: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: visible;
     padding: 0 8px 24px 0;
   }
 
   .platform-grid {
     width: 100%;
     min-width: 0;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
     gap: clamp(12px, 1.76vw, 18px);
     justify-content: center;
   }
 
   .platform-card {
     width: 100%;
-    max-width: 300px;
+    max-width: none;
     min-width: 0;
     min-height: clamp(180px, 21.5vw, 220px);
     padding: clamp(14px, 1.95vw, 20px);
@@ -1284,91 +1376,26 @@ dialog::backdrop {
   }
 }
 
-/* Notebook: três cards por linha e dimensões ajustadas ao conteúdo */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .site-shell {
-    width: min(1120px, calc(100% - 48px));
-    padding-right: clamp(0px, 1.67vw, 24px);
-    padding-left: clamp(0px, 1.67vw, 24px);
-  }
-
-  .topbar {
-    height: clamp(130px, 12.64vw, 182px);
-  }
-
-  .intro {
-    align-items: flex-end;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: clamp(20px, 2vw, 28px);
-    padding: clamp(32px, 2.99vw, 43px) 0 clamp(22px, 2.08vw, 30px);
-  }
-
-  .intro-copy {
-    flex: 1 1 520px;
-    min-width: 0;
-  }
-
-  .search-box {
-    width: min(300px, 100%);
-    min-width: 232px;
-    flex: 0 1 300px;
-  }
-
-  .platform-showcase {
-    display: grid;
-    grid-template-columns: clamp(150px, 13.2vw, 190px) minmax(0, 1fr);
-    align-items: stretch;
-    gap: clamp(14px, 1.4vw, 20px);
-  }
-
-  .mascot-frame {
-    position: relative;
-    inset: auto;
-    width: auto;
-    height: clamp(300px, 27vw, 390px);
-    min-height: 0;
-    align-self: start;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-
-  .mascot-frame img {
-    max-height: 100%;
-    object-position: center bottom;
-  }
-
-  .catalog-content {
-    height: 100%;
-  }
-
-  .catalog-scroll {
-    height: 100%;
-    min-height: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 0 8px 24px 0;
-  }
-
+/* Até 1120px, a grade passa para duas plataformas por linha. */
+@media (min-width: 621px) and (max-width: 1120px) {
   .platform-grid {
-    width: 100%;
-    min-width: 0;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(14px, 1.25vw, 18px);
-  }
-
-  .platform-card {
-    min-width: 0;
-    min-height: 220px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Desktop: grade centralizada com três plataformas por linha */
 @media (min-width: 1441px) {
   .site-shell {
-    width: min(1120px, calc(100% - 32px));
+    --catalog-aside-width: clamp(160px, 8.85vw, 170px);
+    --catalog-aside-gap: clamp(18px, 1.05vw, 20px);
+    width: min(1400px, calc(100% - 32px));
     padding-right: 0;
     padding-left: 0;
+  }
+
+  .topbar,
+  .intro {
+    width: calc(100% - var(--catalog-aside-width) - var(--catalog-aside-gap) - 8px);
+    margin-left: calc(var(--catalog-aside-width) + var(--catalog-aside-gap));
   }
 
   .topbar {
@@ -1395,15 +1422,16 @@ dialog::backdrop {
 
   .platform-showcase {
     display: grid;
-    grid-template-columns: clamp(190px, 13.2vw, 210px) minmax(0, 1fr);
+    grid-template-columns: var(--catalog-aside-width) minmax(0, 1fr);
     align-items: stretch;
-    gap: clamp(20px, 1.5vw, 24px);
+    gap: var(--catalog-aside-gap);
   }
 
   .mascot-frame {
     position: relative;
     inset: auto;
-    width: auto;
+    transform: translateX(-20px);
+    width: 200px;
     height: clamp(350px, 20.3vw, 390px);
     min-height: 0;
     align-self: start;
@@ -1431,7 +1459,7 @@ dialog::backdrop {
   .platform-grid {
     width: 100%;
     min-width: 0;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 18px;
   }
 
