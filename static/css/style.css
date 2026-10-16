@@ -218,8 +218,8 @@ h1 span {
 }
 
 .search-box {
-  width: min(300px, 34%);
-  min-width: 232px;
+  width: min(240px, 100%);
+  min-width: 0;
   height: 46px;
   flex: 0 0 auto;
   display: flex;
@@ -919,7 +919,13 @@ dialog::backdrop {
 }
 
 /* Celular: layout fluido e com rolagem vertical */
-@media (max-width: 620px) {
+@media (max-width: 744px) {
+  html,
+  body {
+    width: 100%;
+    min-width: 0;
+  }
+
   body {
     height: auto;
     min-height: 100vh;
@@ -931,10 +937,23 @@ dialog::backdrop {
 
   .site-shell {
     width: 100%;
+    max-width: none;
+    min-width: 0;
     height: auto;
     min-height: 100vh;
     min-height: 100svh;
     padding: 0 clamp(12px, 3.4vw, 21px) 16px;
+  }
+
+  main,
+  .catalog,
+  .platform-showcase,
+  .catalog-content,
+  .catalog-scroll,
+  .platform-grid {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
   }
 
   main {
@@ -965,7 +984,7 @@ dialog::backdrop {
 
   .brand-title {
     min-width: 0;
-    font-size: clamp(14px, 3.64vw, 17px);
+    font-size: clamp(13px, 2.4vw, 16px);
   }
 
   .settings-trigger {
@@ -986,7 +1005,12 @@ dialog::backdrop {
     min-width: 0;
   }
 
+  .intro-copy {
+    text-align: left;
+  }
+
   .eyebrow {
+    justify-content: flex-start;
     margin-bottom: clamp(10px, 1.94vw, 12px);
     font-size: clamp(10px, 1.78vw, 11px);
   }
@@ -995,20 +1019,18 @@ dialog::backdrop {
     width: 100%;
     max-width: 100%;
     margin-bottom: 12px;
-    font-size: clamp(1.65rem, 7.2vw, 2.5rem);
+    text-align: left;
+    font-size: clamp(1.4rem, 4.7vw, 2.1rem);
   }
 
   .intro-description {
-    width: 100%;
-    max-width: 44ch;
-    margin-bottom: 0;
-    overflow-wrap: anywhere;
-    font-size: 14px;
-    line-height: 1.55;
+    margin-inline: auto;
+    font-size: clamp(0.8rem, 2.2vw, 1.1rem);
+    line-height: 1.3rem;
   }
 
   .search-box {
-    width: 100%;
+    width: min(240px, 100%);
     min-width: 0;
     height: clamp(46px, 11.36vw, 50px);
     margin-bottom: 0;
@@ -1033,16 +1055,17 @@ dialog::backdrop {
   .platform-showcase {
     height: auto;
     min-height: 0;
-    display: grid;
-    grid-template-columns: clamp(64px, 20vw, 104px) minmax(0, 1fr);
-    align-items: start;
-    gap: clamp(8px, 2.4vw, 14px);
+    display: block;
   }
 
   .catalog-content,
   .catalog-scroll {
     height: auto;
     min-width: 0;
+  }
+
+  .catalog-content {
+    margin-inline: 0;
   }
 
   .catalog-scroll {
@@ -1053,30 +1076,11 @@ dialog::backdrop {
   }
 
   .mascot-frame {
-    position: sticky;
-    top: 14px;
-    inset: auto;
-    width: 100%;
-    height: clamp(190px, 60vw, 280px);
-    min-height: 0;
-    display: flex;
-    align-self: start;
-    align-items: flex-start;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .mascot-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center top;
+    display: none;
   }
 
   .platform-grid {
-    width: 100%;
-    min-width: 0;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
     gap: clamp(10px, 1.94vw, 12px);
   }
 
@@ -1098,7 +1102,7 @@ dialog::backdrop {
     min-width: 0;
     max-width: 100%;
     margin-top: clamp(16px, 3.23vw, 20px);
-    font-size: clamp(16px, 2.9vw, 18px);
+    font-size: clamp(14px, 2.4vw, 17px);
     overflow-wrap: anywhere;
   }
 
@@ -1107,12 +1111,12 @@ dialog::backdrop {
     min-width: 0;
     max-width: 100%;
     margin-bottom: clamp(10px, 1.94vw, 12px);
-    font-size: clamp(13px, 2.26vw, 14px);
+    font-size: clamp(11.5px, 1.7vw, 12.5px);
     overflow-wrap: anywhere;
   }
 
   .card-action {
-    font-size: clamp(13px, 2.26vw, 14px);
+    font-size: clamp(12px, 1.8vw, 13.5px);
   }
 
   .admin-dialog,
@@ -1254,7 +1258,7 @@ dialog::backdrop {
   }
 }
 
-  @media (min-width: 621px) and (max-width: 877px) {
+  @media (min-width: 745px) and (max-width: 1050px) {
   body {
     height: auto;
     min-height: 100vh;
@@ -1282,7 +1286,8 @@ dialog::backdrop {
 
   .topbar,
   .intro {
-    width: 100%; 
+    width: 100%;
+    margin-left: 0;
   }
 
   .topbar {
@@ -1292,44 +1297,46 @@ dialog::backdrop {
   .intro {
     align-items: flex-start;
     flex-direction: column;
+    text-align: left;
     gap: clamp(14px, 1.76vw, 18px);
     padding: clamp(26px, 3.5vw, 36px) 0 clamp(20px, 2.34vw, 24px);
   }
 
   .intro-copy {
+    width: 100%;
     min-width: 0;
+    text-align: left;
+  }
+
+  .eyebrow {
+    justify-content: flex-start;
+  }
+
+  .intro-description {
+    margin-inline: 0;
   }
 
   h1 {
+    text-align: left;
     font-size: clamp(2rem, 3.4vw, 2.5rem);
   }
 
   .search-box {
-    width: min(100%, 460px);
+    width: min(100%, 240px);
     min-width: 0;
+    align-self: flex-start;
+    margin-left: 0;
+    margin-right: auto;
   }
 
   .platform-showcase {
     height: auto;
     min-height: 0;
-    display: grid;
-    grid-template-columns: clamp(100px, 16vw, 150px) minmax(0, 1fr);
-    align-items: start;
-    gap: clamp(12px, 2vw, 20px);
+    display: block;
   }
 
   .mascot-frame {
-    position: sticky;
-    top: 18px;
-    inset: auto;
-    width: 100%;
-    height: clamp(260px, 46vw, 390px);
-    min-height: 0;
-    display: flex;
-    align-self: start;
-    align-items: flex-start;
-    justify-content: center;
-    overflow: hidden;
+    display: none;
   }
 
   .mascot-frame img {
@@ -1340,20 +1347,22 @@ dialog::backdrop {
   }
 
   .catalog-content {
+    width: min(100%, 1055px);
     height: auto;
+    margin-inline: auto;
   }
 
   .catalog-scroll {
     height: auto;
     min-height: 0;
     overflow: visible;
-    padding: 0 8px 24px 0;
+    padding: 0 0 24px;
   }
 
   .platform-grid {
     width: 100%;
     min-width: 0;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(12px, 1.76vw, 18px);
     justify-content: center;
   }
@@ -1405,9 +1414,9 @@ dialog::backdrop {
   }
 
   .search-box {
-    width: 300px;
-    min-width: 232px;
-    flex: 0 0 300px;
+    width: min(240px, 100%);
+    min-width: 0;
+    flex: 0 0 auto;
   }
 
   .platform-showcase {
