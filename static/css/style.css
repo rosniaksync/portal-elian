@@ -1254,9 +1254,7 @@ dialog::backdrop {
   }
 }
 
-/* Tablet: página com rolagem natural, mascote ao lado e grade adaptável */
-@media (min-width: 621px) and (max-width: 1024px) {
-  /* No tablet, a página inteira acompanha a rolagem. */
+  @media (min-width: 621px) and (max-width: 877px) {
   body {
     height: auto;
     min-height: 100vh;
@@ -1284,8 +1282,7 @@ dialog::backdrop {
 
   .topbar,
   .intro {
-    width: 100%;
-    margin-left: 0;
+    width: 100%; 
   }
 
   .topbar {
@@ -1374,14 +1371,7 @@ dialog::backdrop {
     margin-top: clamp(22px, 3.3vw, 34px);
     font-size: clamp(17px, 1.86vw, 19px);
   }
-}
-
-/* Até 1120px, a grade passa para duas plataformas por linha. */
-@media (min-width: 621px) and (max-width: 1120px) {
-  .platform-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+} 
 
 @media (min-width: 1441px) {
   .site-shell {
