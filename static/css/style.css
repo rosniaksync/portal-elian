@@ -1,3 +1,6 @@
+/* =========================================================
+   CONFIGURAÇÃO VISUAL: cores e tipografia
+   ========================================================= */
 :root {
   color-scheme: dark;
   --navy-950: #061225;
@@ -14,6 +17,7 @@
   --font-display: 'Aptos Display', 'Segoe UI', sans-serif;
 }
 
+/* Base e normalização */
 * {
   box-sizing: border-box;
 }
@@ -48,6 +52,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   outline-offset: 3px;
 }
 
+/* =========================================================
+   ESTRUTURA DA PÁGINA
+   ========================================================= */
 .page-glow {
   position: absolute;
   z-index: 0;
@@ -72,8 +79,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .site-shell {
-  --catalog-aside-width: clamp(128px, 14vw, 180px);
-  --catalog-aside-gap: clamp(16px, 2vw, 24px);
   width: min(1120px, calc(100% - 32px));
   height: 100vh;
   min-height: 0;
@@ -94,12 +99,9 @@ main {
   flex-direction: column;
 }
 
-.topbar,
-.intro {
-  width: calc(100% - var(--catalog-aside-width) - var(--catalog-aside-gap));
-  margin-left: calc(var(--catalog-aside-width) + var(--catalog-aside-gap));
-}
-
+/* =========================================================
+   CABEÇALHO E IDENTIDADE VISUAL
+   ========================================================= */
 .topbar {
   height: 182px;
   flex: 0 0 auto;
@@ -121,10 +123,6 @@ main {
   width: 96px;
   height: 46px;
   object-fit: contain;
-}
-
-.brand-divider {
-  display: none;
 }
 
 .brand-title {
@@ -168,6 +166,9 @@ main {
   border-radius: 14px;
 }
 
+/* =========================================================
+   APRESENTAÇÃO E BUSCA
+   ========================================================= */
 .intro {
   flex: 0 0 auto;
   display: flex;
@@ -213,13 +214,13 @@ h1 {
   letter-spacing: -.045em;
 }
 
-h1 span {
-  color: #9ab7d9;
+.intro-description {
+  margin-bottom: 3px;
 }
 
 .search-box {
-  width: min(240px, 100%);
-  min-width: 0;
+  width: min(300px, 34%);
+  min-width: 232px;
   height: 46px;
   flex: 0 0 auto;
   display: flex;
@@ -263,6 +264,9 @@ h1 span {
   outline: 3px solid rgba(0, 210, 120, .24);
 }
 
+/* =========================================================
+   CATÁLOGO E MASCOTE
+   ========================================================= */
 .catalog {
   width: 100%;
   min-height: 0;
@@ -271,36 +275,27 @@ h1 span {
   padding: 0;
 }
 
-.intro-description {
-  margin-bottom: 3px;
-}
-
 .platform-showcase {
   height: 100%;
   min-height: 0;
   position: relative;
-  display: grid;
-  grid-template-columns: clamp(128px, 14vw, 180px) minmax(0, 1fr);
-  align-items: stretch;
-  gap: clamp(16px, 2vw, 24px);
+  display: block;
 }
 
 .mascot-frame {
-  position: sticky;
-  top: 18px;
-  width: 100%;
-  height: clamp(300px, 27vw, 390px);
-  min-height: 0;
+  position: absolute;
+  top: 0;
+  left: -264px;
+  width: 260px;
+  height: 390px;
   display: flex;
-  align-self: start;
   align-items: flex-start;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .mascot-frame img {
   display: block;
-  width: 100%;
   width: 100%;
   height: 100%;
   max-height: none;
@@ -343,10 +338,13 @@ h1 span {
 .platform-grid {
   width: min(100%, 1055px);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
+/* =========================================================
+   CARDS DAS PLATAFORMAS
+   ========================================================= */
 .platform-card {
   min-height: 220px;
   position: relative;
@@ -453,6 +451,9 @@ h1 span {
   opacity: 1;
 }
 
+/* =========================================================
+   ESTADO VAZIO E ERRO DE CARREGAMENTO
+   ========================================================= */
 .empty-state {
   min-height: 260px;
   display: grid;
@@ -491,24 +492,9 @@ h1 span {
   font-size: 13px;
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin-top: auto;
-  padding: 22px 0 27px;
-  border-top: 1px solid var(--line);
-  color: #7188a5;
-  font-size: 11px;
-  text-align: center;
-}
-
-.footer-separator {
-  margin: 0 7px;
-  color: #38506e;
-}
-
+/* =========================================================
+   JANELAS E BOTÕES
+   ========================================================= */
 dialog {
   max-width: min(720px, calc(100vw - 32px));
   max-height: min(84vh, 850px);
@@ -524,10 +510,6 @@ dialog {
 dialog::backdrop {
   background: rgba(3,9,18,.74);
   backdrop-filter: blur(5px);
-}
-
-.admin-dialog {
-  width: 690px;
 }
 
 .form-dialog {
@@ -565,54 +547,12 @@ dialog::backdrop {
   height: 17px;
 }
 
-.prototype-notice {
-  display: flex;
-  gap: 11px;
-  margin: 20px 24px 16px;
-  padding: 12px 13px;
-  border: 1px solid rgba(242,187,112,.2);
-  border-radius: 11px;
-  background: rgba(144,92,31,.13);
-  color: #dfbd8e;
-}
-
-.prototype-notice svg {
-  width: 17px;
-  height: 17px;
-  flex: 0 0 auto;
-  margin-top: 1px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-}
-
-.prototype-notice p {
-  margin: 0;
-  font-size: 11px;
-  line-height: 1.55;
-}
-
-.prototype-notice strong {
-  color: #f5d9af;
-}
-
-.prototype-notice em {
-  color: #f5d9af;
-  font-style: normal;
-}
-
 .admin-actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
-  padding: 0 24px 15px;
-}
-
-.secondary-actions {
-  display: flex;
-  gap: 8px;
+  padding: 24px 24px 15px;
 }
 
 .primary-button, .secondary-button {
@@ -657,6 +597,9 @@ dialog::backdrop {
   background: rgba(0,210,120,.06);
 }
 
+/* =========================================================
+   LISTA DE PLATAFORMAS DO GERENCIAMENTO
+   ========================================================= */
 .admin-feedback {
   min-height: 16px;
   margin: 0 25px 8px;
@@ -670,10 +613,10 @@ dialog::backdrop {
 
 .admin-item {
   display: grid;
-  grid-template-columns: 34px minmax(0,1fr) auto auto auto;
+  grid-template-columns: 44px minmax(0,1fr) auto auto;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 13px;
+  padding: 16px 14px;
   border-top: 1px solid rgba(190,210,237,.09);
 }
 
@@ -682,8 +625,8 @@ dialog::backdrop {
 }
 
 .admin-item-icon {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   display: grid;
   place-items: center;
   border-radius: 9px;
@@ -692,13 +635,8 @@ dialog::backdrop {
 }
 
 .admin-item-icon svg {
-  width: 17px;
-  height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 21px;
+  height: 21px;
 }
 
 .admin-item-copy {
@@ -710,7 +648,7 @@ dialog::backdrop {
 .admin-item-copy strong {
   overflow: hidden;
   color: #e8eef6;
-  font-size: 12px;
+  font-size: 13px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -718,14 +656,8 @@ dialog::backdrop {
 .admin-item-copy small {
   overflow: hidden;
   color: #7f95b0;
-  font-size: 10px;
+  font-size: 11px;
   text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.admin-item-state {
-  color: #8fa2bb;
-  font-size: 10px;
   white-space: nowrap;
 }
 
@@ -739,6 +671,14 @@ dialog::backdrop {
   cursor: pointer;
 }
 
+.admin-item .small-action[data-editar],
+.admin-item .small-action[data-remover] {
+  min-height: 34px;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
 .small-action:hover {
   background: rgba(255,255,255,.07);
   color: var(--text);
@@ -749,6 +689,9 @@ dialog::backdrop {
   color: #ff9f9f;
 }
 
+/* =========================================================
+   FORMULÁRIOS
+   ========================================================= */
 .platform-form {
   padding-bottom: 23px;
 }
@@ -870,18 +813,9 @@ dialog::backdrop {
   border-top: 1px solid var(--line);
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
-
+/* =========================================================
+   AVISO (TOAST) E ANIMAÇÕES
+   ========================================================= */
 .toast {
   position: fixed;
   z-index: 5;
@@ -918,14 +852,11 @@ dialog::backdrop {
   }
 }
 
+/* =========================================================
+   RESPONSIVIDADE: celular, tablet, notebook e desktop
+   ========================================================= */
 /* Celular: layout fluido e com rolagem vertical */
-@media (max-width: 744px) {
-  html,
-  body {
-    width: 100%;
-    min-width: 0;
-  }
-
+@media (max-width: 620px) {
   body {
     height: auto;
     min-height: 100vh;
@@ -937,33 +868,14 @@ dialog::backdrop {
 
   .site-shell {
     width: 100%;
-    max-width: none;
-    min-width: 0;
     height: auto;
     min-height: 100vh;
     min-height: 100svh;
     padding: 0 clamp(12px, 3.4vw, 21px) 16px;
   }
 
-  main,
-  .catalog,
-  .platform-showcase,
-  .catalog-content,
-  .catalog-scroll,
-  .platform-grid {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-  }
-
   main {
     min-height: auto;
-  }
-
-  .topbar,
-  .intro {
-    width: 100%;
-    margin-left: 0;
   }
 
   .topbar {
@@ -984,7 +896,7 @@ dialog::backdrop {
 
   .brand-title {
     min-width: 0;
-    font-size: clamp(13px, 2.4vw, 16px);
+    font-size: clamp(14px, 3.64vw, 17px);
   }
 
   .settings-trigger {
@@ -1005,12 +917,7 @@ dialog::backdrop {
     min-width: 0;
   }
 
-  .intro-copy {
-    text-align: left;
-  }
-
   .eyebrow {
-    justify-content: flex-start;
     margin-bottom: clamp(10px, 1.94vw, 12px);
     font-size: clamp(10px, 1.78vw, 11px);
   }
@@ -1019,18 +926,20 @@ dialog::backdrop {
     width: 100%;
     max-width: 100%;
     margin-bottom: 12px;
-    text-align: left;
-    font-size: clamp(1.4rem, 4.7vw, 2.1rem);
+    font-size: clamp(1.65rem, 7.2vw, 2.5rem);
   }
 
   .intro-description {
-    margin-inline: auto;
-    font-size: clamp(0.8rem, 2.2vw, 1.1rem);
-    line-height: 1.3rem;
+    width: 100%;
+    max-width: 44ch;
+    margin-bottom: 0;
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .search-box {
-    width: min(240px, 100%);
+    width: 100%;
     min-width: 0;
     height: clamp(46px, 11.36vw, 50px);
     margin-bottom: 0;
@@ -1052,20 +961,11 @@ dialog::backdrop {
     flex: 0 0 auto;
   }
 
-  .platform-showcase {
-    height: auto;
-    min-height: 0;
-    display: block;
-  }
-
+  .platform-showcase,
   .catalog-content,
   .catalog-scroll {
     height: auto;
     min-width: 0;
-  }
-
-  .catalog-content {
-    margin-inline: 0;
   }
 
   .catalog-scroll {
@@ -1080,7 +980,9 @@ dialog::backdrop {
   }
 
   .platform-grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
     gap: clamp(10px, 1.94vw, 12px);
   }
 
@@ -1102,7 +1004,7 @@ dialog::backdrop {
     min-width: 0;
     max-width: 100%;
     margin-top: clamp(16px, 3.23vw, 20px);
-    font-size: clamp(14px, 2.4vw, 17px);
+    font-size: clamp(16px, 2.9vw, 18px);
     overflow-wrap: anywhere;
   }
 
@@ -1111,25 +1013,19 @@ dialog::backdrop {
     min-width: 0;
     max-width: 100%;
     margin-bottom: clamp(10px, 1.94vw, 12px);
-    font-size: clamp(11.5px, 1.7vw, 12.5px);
+    font-size: clamp(13px, 2.26vw, 14px);
     overflow-wrap: anywhere;
   }
 
   .card-action {
-    font-size: clamp(12px, 1.8vw, 13.5px);
+    font-size: clamp(13px, 2.26vw, 14px);
   }
 
-  .admin-dialog,
   .form-dialog {
     width: calc(100vw - 16px);
     max-width: calc(100vw - 16px);
     max-height: 90vh;
     max-height: 90dvh;
-  }
-
-  .footer {
-    flex-direction: column;
-    gap: 8px;
   }
 
   .dialog-header {
@@ -1143,28 +1039,14 @@ dialog::backdrop {
     line-height: 1.25;
   }
 
-  .prototype-notice {
-    gap: 8px;
-    margin: clamp(10px, 2.42vw, 15px) clamp(12px, 2.74vw, 17px) clamp(10px, 1.94vw, 12px);
-    padding: clamp(10px, 1.94vw, 12px);
-  }
-
   .admin-actions {
     align-items: flex-start;
     flex-direction: column;
-    padding: 0 clamp(12px, 2.74vw, 17px) 10px;
+    padding: 24px clamp(12px, 2.74vw, 17px) 10px;
   }
 
-  .admin-actions > .primary-button,
-  .secondary-actions > .secondary-button {
+  .admin-actions > .primary-button {
     width: 100%;
-  }
-
-  .secondary-actions {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 7px;
   }
 
   .secondary-button {
@@ -1178,19 +1060,15 @@ dialog::backdrop {
   }
 
   .admin-item {
-    grid-template-columns: clamp(26px, 4.84vw, 30px) minmax(0, 1fr) auto;
+    grid-template-columns: clamp(32px, 8.5vw, 36px) minmax(0, 1fr) auto;
     grid-template-rows: auto auto;
-    gap: 4px 8px;
-    padding: 10px 8px;
-  }
-
-  .admin-item-state {
-    display: none;
+    gap: 6px 9px;
+    padding: 14px 10px;
   }
 
   .admin-item-icon {
-    width: clamp(27px, 4.68vw, 29px);
-    height: clamp(27px, 4.68vw, 29px);
+    width: clamp(32px, 8.5vw, 36px);
+    height: clamp(32px, 8.5vw, 36px);
     grid-column: 1;
     grid-row: 1;
     align-self: start;
@@ -1204,14 +1082,22 @@ dialog::backdrop {
 
   .admin-item-copy small {
     max-width: 100%;
+    font-size: 10.5px;
   }
 
   .admin-item .small-action {
-    min-height: 36px;
-    padding: 6px;
+    min-height: 40px;
+    padding: 8px 10px;
     grid-column: 2;
     grid-row: 2;
     justify-self: start;
+  }
+
+  .admin-item .small-action[data-editar],
+  .admin-item .small-action[data-remover] {
+    min-height: 40px;
+    padding: 8px 10px;
+    font-size: 11px;
   }
 
   .admin-item .small-action--danger {
@@ -1258,80 +1144,45 @@ dialog::backdrop {
   }
 }
 
-  @media (min-width: 745px) and (max-width: 1050px) {
-  body {
-    height: auto;
-    min-height: 100vh;
-    min-height: 100svh;
-    overflow-y: auto;
-  }
-
+/* Tablet: conteúdo estático, sem mascote e com grade adaptável */
+@media (min-width: 621px) and (max-width: 1024px) {
   .site-shell {
     width: min(1120px, calc(100% - 32px));
-    height: auto;
-    min-height: 100vh;
-    min-height: 100svh;
     padding-right: clamp(16px, 2.73vw, 28px);
     padding-left: clamp(16px, 2.73vw, 28px);
-  }
-
-  main {
-    min-height: auto;
-    flex: 0 0 auto;
-  }
-
-  .catalog {
-    flex: 0 0 auto;
-  }
-
-  .topbar,
-  .intro {
-    width: 100%;
-    margin-left: 0;
   }
 
   .topbar {
     height: clamp(96px, 12.7vw, 130px);
   }
 
+  .topbar,
+  .intro {
+    width: calc(100% - 7px);
+    margin-left: 0;
+  }
+
   .intro {
     align-items: flex-start;
     flex-direction: column;
-    text-align: left;
     gap: clamp(14px, 1.76vw, 18px);
     padding: clamp(26px, 3.5vw, 36px) 0 clamp(20px, 2.34vw, 24px);
   }
 
   .intro-copy {
-    width: 100%;
     min-width: 0;
-    text-align: left;
-  }
-
-  .eyebrow {
-    justify-content: flex-start;
-  }
-
-  .intro-description {
-    margin-inline: 0;
   }
 
   h1 {
-    text-align: left;
     font-size: clamp(2rem, 3.4vw, 2.5rem);
   }
 
   .search-box {
-    width: min(100%, 240px);
+    width: min(100%, 460px);
     min-width: 0;
-    align-self: flex-start;
-    margin-left: 0;
-    margin-right: auto;
   }
 
   .platform-showcase {
-    height: auto;
-    min-height: 0;
     display: block;
   }
 
@@ -1339,37 +1190,29 @@ dialog::backdrop {
     display: none;
   }
 
-  .mascot-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center top;
-  }
-
   .catalog-content {
-    width: min(100%, 1055px);
-    height: auto;
-    margin-inline: auto;
+    height: 100%;
   }
 
   .catalog-scroll {
-    height: auto;
+    height: 100%;
     min-height: 0;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: auto;
     padding: 0 0 24px;
   }
 
   .platform-grid {
     width: 100%;
     min-width: 0;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: clamp(12px, 1.76vw, 18px);
     justify-content: center;
   }
 
   .platform-card {
     width: 100%;
-    max-width: none;
+    max-width: 300px;
     min-width: 0;
     min-height: clamp(180px, 21.5vw, 220px);
     padding: clamp(14px, 1.95vw, 20px);
@@ -1380,43 +1223,45 @@ dialog::backdrop {
     margin-top: clamp(22px, 3.3vw, 34px);
     font-size: clamp(17px, 1.86vw, 19px);
   }
-} 
+}
 
-@media (min-width: 1441px) {
+/* Notebook: três cards por linha e dimensões ajustadas ao conteúdo */
+@media (min-width: 1025px) and (max-width: 1440px) {
   .site-shell {
-    --catalog-aside-width: clamp(160px, 8.85vw, 170px);
-    --catalog-aside-gap: clamp(18px, 1.05vw, 20px);
-    width: min(1400px, calc(100% - 32px));
-    padding-right: 0;
-    padding-left: 0;
+    --catalog-aside-width: clamp(150px, 13.2vw, 190px);
+    --catalog-aside-gap: clamp(14px, 1.4vw, 20px);
+    width: min(1120px, calc(100% - 48px));
+    padding-right: clamp(0px, 1.67vw, 24px);
+    padding-left: clamp(0px, 1.67vw, 24px);
   }
 
   .topbar,
   .intro {
-    width: calc(100% - var(--catalog-aside-width) - var(--catalog-aside-gap) - 8px);
+    width: calc(100% - var(--catalog-aside-width) - var(--catalog-aside-gap) - 7px);
     margin-left: calc(var(--catalog-aside-width) + var(--catalog-aside-gap));
   }
 
   .topbar {
-    height: 182px;
+    height: clamp(130px, 12.64vw, 182px);
   }
 
   .intro {
     align-items: flex-end;
-    flex-wrap: nowrap;
-    gap: 40px;
-    padding: 43px 0 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: clamp(20px, 2vw, 28px);
+    padding: clamp(32px, 2.99vw, 43px) 0 clamp(22px, 2.08vw, 30px);
   }
 
   .intro-copy {
-    flex: 1 1 auto;
+    flex: 1 1 520px;
     min-width: 0;
   }
 
   .search-box {
-    width: min(240px, 100%);
-    min-width: 0;
-    flex: 0 0 auto;
+    width: min(300px, 100%);
+    min-width: 232px;
+    flex: 0 1 300px;
   }
 
   .platform-showcase {
@@ -1429,9 +1274,8 @@ dialog::backdrop {
   .mascot-frame {
     position: relative;
     inset: auto;
-    transform: translateX(-20px);
-    width: 200px;
-    height: clamp(350px, 20.3vw, 390px);
+    width: auto;
+    height: clamp(300px, 27vw, 390px);
     min-height: 0;
     align-self: start;
     align-items: flex-end;
@@ -1452,12 +1296,98 @@ dialog::backdrop {
     min-height: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 0 8px 24px 0;
+    padding: 0 0 24px;
   }
 
   .platform-grid {
     width: 100%;
     min-width: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(14px, 1.25vw, 18px);
+  }
+
+  .platform-card {
+    min-width: 0;
+    min-height: 220px;
+  }
+}
+
+/* Desktop: grade centralizada com quatro plataformas por linha */
+@media (min-width: 1441px) {
+  .site-shell {
+    --catalog-visible-width: min(calc(100% - 7px), 1055px);
+    width: min(1120px, calc(100% - 32px));
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .topbar {
+    width: var(--catalog-visible-width);
+    height: 182px;
+    margin-left: calc((100% - 7px - var(--catalog-visible-width)) / 2);
+  }
+
+  .intro {
+    width: var(--catalog-visible-width);
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    gap: 40px;
+    padding: 43px 0 30px;
+    margin-left: calc((100% - 7px - var(--catalog-visible-width)) / 2);
+  }
+
+  .intro-copy {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .search-box {
+    width: 300px;
+    min-width: 232px;
+    flex: 0 0 300px;
+  }
+
+  .platform-showcase {
+    display: block;
+  }
+
+  .mascot-frame {
+    position: absolute;
+    top: 0;
+    right: calc(100% + 24px);
+    left: auto;
+    width: clamp(0px, calc(50vw - 584px), 260px);
+    height: auto;
+    aspect-ratio: 2 / 3;
+    min-height: 0;
+    align-self: start;
+    align-items: flex-start;
+    overflow: visible;
+  }
+
+  .mascot-frame img {
+    max-height: 100%;
+    object-position: center bottom;
+  }
+
+  .catalog-content {
+    width: 100%;
+    height: 100%;
+    margin-inline: 0;
+  }
+
+  .catalog-scroll {
+    height: 100%;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0 0 24px;
+  }
+
+  .platform-grid {
+    width: min(100%, 1055px);
+    min-width: 0;
+    margin-inline: auto;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 18px;
   }
@@ -1468,11 +1398,233 @@ dialog::backdrop {
   }
 }
 
+/* =========================================================
+   ACESSIBILIDADE: movimento reduzido
+   ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     scroll-behavior: auto !important;
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+  }
+}
+
+/* =========================================================
+   TELA DE GERENCIAMENTO (gerenciamento.html)
+   ========================================================= */
+body.admin-page {
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.admin-page .site-shell {
+  width: min(760px, calc(100% - 32px));
+  height: auto;
+  min-height: 100vh;
+  padding: 0 0 40px;
+}
+
+a.secondary-button,
+a.primary-button {
+  text-decoration: none;
+}
+
+.admin-panel,
+.login-panel {
+  width: 100%;
+  border: 1px solid rgba(189,208,234,.16);
+  border-radius: 19px;
+  background: #0b1d37;
+  box-shadow: 0 28px 90px rgba(0,0,0,.35);
+}
+
+.login-panel {
+  max-width: 420px;
+  margin: 40px auto 0;
+}
+
+.admin-panel h1,
+.login-panel h1 {
+  margin: 0;
+  font: 750 21px var(--font-display);
+  letter-spacing: -.04em;
+}
+
+.admin-panel .dialog-header {
+  align-items: center;
+}
+
+.field-error {
+  margin: 8px 25px 0;
+  color: #ff9f9f;
+  font-size: 11px;
+}
+
+.admin-empty {
+  margin: 0;
+  padding: 16px 14px;
+  border-top: 1px solid rgba(190,210,237,.09);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Login: só o card, centralizado na tela */
+.login-page .site-shell {
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.login-page main {
+  flex: 0 0 auto;
+}
+
+.login-page .login-panel {
+  margin: 0 auto;
+}
+
+/* Painel de gerenciamento: tela fixa, só a lista de plataformas rola */
+body.panel-page {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.panel-page .site-shell {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  padding: 48px 0;
+}
+
+.panel-page main {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.panel-page .admin-panel {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.panel-page .admin-panel > .dialog-header,
+.panel-page .admin-actions,
+.panel-page .admin-feedback {
+  flex: 0 0 auto;
+}
+
+/* Botão centralizado na vertical entre o cabeçalho e a lista */
+.panel-page .admin-actions {
+  align-items: center;
+  padding: 22px 24px;
+}
+
+.panel-page .admin-feedback {
+  min-height: 0;
+}
+
+.panel-page .admin-feedback:empty {
+  display: none;
+}
+
+.panel-page .admin-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0 8px 12px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #164e93 rgba(2, 13, 33, .5);
+  scrollbar-width: thin;
+}
+
+.panel-page .admin-list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.panel-page .admin-list::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background: rgba(2, 13, 33, .5);
+}
+
+.panel-page .admin-list::-webkit-scrollbar-thumb {
+  border: 2px solid rgba(2, 13, 33, .5);
+  border-radius: 8px;
+  background: #164e93;
+}
+
+@media (max-width: 620px) {
+  .admin-page .site-shell {
+    width: 100%;
+    padding: 0 clamp(12px, 3.4vw, 21px) 24px;
+  }
+
+  .login-page .site-shell {
+    justify-content: center;
+    padding-top: 24px;
+  }
+
+  .panel-page .site-shell {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .panel-page .admin-actions {
+    padding: 18px clamp(12px, 2.74vw, 17px);
+  }
+
+  .field-error {
+    margin-right: 18px;
+    margin-left: 18px;
+  }
+}
+
+/* Painel de gerenciamento: fontes 20% maiores (exceto o botão Adicionar plataforma) */
+.panel-page .admin-panel .dialog-header .eyebrow {
+  font-size: 10.8px;
+}
+
+.panel-page .admin-panel h1 {
+  font-size: 25.2px;
+}
+
+.panel-page #btnSair {
+  font-size: 14.4px;
+}
+
+.panel-page .admin-feedback {
+  font-size: 13.2px;
+}
+
+.panel-page .admin-item-copy strong {
+  font-size: 15.6px;
+}
+
+.panel-page .admin-item-copy small {
+  font-size: 13.2px;
+}
+
+.panel-page .admin-item .small-action[data-editar],
+.panel-page .admin-item .small-action[data-remover] {
+  font-size: 13.2px;
+}
+
+.panel-page .admin-empty {
+  font-size: 15.6px;
+}
+
+@media (max-width: 620px) {
+  .panel-page .admin-panel h1 {
+    font-size: 21.6px;
+  }
+
+  .panel-page #btnSair {
+    font-size: 13.2px;
+  }
+
+  .panel-page .admin-item-copy small {
+    font-size: 12.6px;
   }
 }

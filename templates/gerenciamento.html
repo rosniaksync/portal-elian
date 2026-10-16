@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07162c">
+  <meta name="robots" content="noindex">
+  <title>Gerenciamento | Grupo Elian</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo-elian.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="admin-page {{ 'panel-page' if configuracao_liberada else 'login-page' }}">
+  <div class="page-glow page-glow--one" aria-hidden="true"></div>
+  <div class="page-glow page-glow--two" aria-hidden="true"></div>
+
+  <div class="site-shell">
+    <main>
+      {% if configuracao_liberada %}
+        <section class="admin-panel" aria-labelledby="tituloGerenciamento">
+          <div class="dialog-header">
+            <div>
+              <p class="eyebrow">GERENCIAMENTO</p>
+              <h1 id="tituloGerenciamento">Configurar plataformas</h1>
+            </div>
+            <button class="secondary-button" id="btnSair" type="button">Sair</button>
+          </div>
+          <div class="admin-actions">
+            <button class="primary-button" id="btnAdicionarPlataforma" type="button"><span aria-hidden="true">+</span> Adicionar plataforma</button>
+          </div>
+          <p class="admin-feedback" id="feedbackGerenciamento" role="status" aria-live="polite"></p>
+          <div class="admin-list" id="listaPlataformas"></div>
+        </section>
+      {% else %}
+        <section class="login-panel" aria-labelledby="tituloLogin">
+          <form class="platform-form" id="formularioSenha">
+            <div class="dialog-header">
+              <div>
+                <p class="eyebrow">ACESSO RESTRITO</p>
+                <h1 id="tituloLogin">Digite a senha</h1>
+              </div>
+            </div>
+            <label class="field-label" for="senhaConfiguracao">Senha de gerenciamento</label>
+            <input class="form-control" id="senhaConfiguracao" type="password" autocomplete="current-password" required>
+            <p class="field-error" id="erroSenha" role="alert" hidden>Senha incorreta.</p>
+            <div class="form-actions">
+              <a class="secondary-button" href="{{ url_for('painel_principal') }}">Cancelar</a>
+              <button class="primary-button" type="submit">Entrar</button>
+            </div>
+          </form>
+        </section>
+      {% endif %}
+    </main>
+  </div>
+
+  {% if configuracao_liberada %}
+    <dialog class="form-dialog" id="janelaFormulario" aria-labelledby="tituloFormulario">
+      <form class="platform-form" id="formularioPlataforma">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">CATÁLOGO</p>
+            <h2 id="tituloFormulario">Adicionar plataforma</h2>
+          </div>
+          <button class="icon-button dialog-close" id="btnFecharFormulario" type="button" aria-label="Fechar formulário">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+        <input id="campoId" type="hidden">
+        <label class="field-label" for="campoNome">Nome da plataforma <span>*</span></label>
+        <input class="form-control" id="campoNome" name="nome" maxlength="60" required placeholder="Ex.: Portal de Vendas">
+        <label class="field-label" for="campoDescricao">Descrição <span>*</span></label>
+        <textarea class="form-control form-textarea" id="campoDescricao" name="descricao" maxlength="150" required placeholder="Explique em poucas palavras para que serve."></textarea>
+        <label class="field-label" for="campoUrl">Endereço da plataforma <span>*</span></label>
+        <input class="form-control" id="campoUrl" name="url" type="url" required placeholder="https://exemplo.elian.com.br">
+        <div class="form-row">
+          <div>
+            <label class="field-label" for="campoTipo">Tipo de acesso</label>
+            <select class="form-control" id="campoTipo" name="tipo"><option value="interno">Interna</option><option value="externo">Externa</option></select>
+          </div>
+          <div>
+            <label class="field-label" for="campoIcone">Ícone</label>
+            <select class="form-control" id="campoIcone" name="icone"><option value="sparkles">IA / Criação</option><option value="robot">Agente</option><option value="chat">Conversa</option><option value="audio">Áudio</option><option value="image">Imagem</option><option value="shapes">Recursos criativos</option><option value="briefcase">Produtividade</option><option value="trophy">Desempenho</option><option value="rocket">Tecnologia</option><option value="store">Vendas</option><option value="clipboard">Formulário</option><option value="meal">Refeição</option></select>
+          </div>
+        </div>
+        <label class="checkbox-row"><input id="campoAtivo" type="checkbox" checked><span class="checkbox-ui"></span><span>Exibir esta plataforma no portal</span></label>
+        <div class="form-actions">
+          <button class="secondary-button" id="btnCancelarFormulario" type="button">Cancelar</button>
+          <button class="primary-button" type="submit">Salvar plataforma</button>
+        </div>
+      </form>
+    </dialog>
+  {% endif %}
+  <div class="toast" id="aviso" role="status" aria-live="polite"></div>
+
+  <script src="{{ url_for('static', filename='js/gerenciamento.js') }}"></script>
+</body>
+</html>

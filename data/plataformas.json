@@ -1,14 +1,119 @@
 [
-  { "id": "agentes-ia", "name": "Agentes de IA", "description": "Agentes especializados para processos e áreas do Grupo Elian.", "url": "https://studio.elian.com.br/agentes-ia", "type": "interno", "icon": "robot", "active": true },
-  { "id": "elian-studio", "name": "Elian Studio", "description": "Criação de imagens e assistente corporativo.", "url": "https://studio.elian.com.br/", "type": "interno", "icon": "sparkles", "active": true },
-  { "id": "chatgpt", "name": "ChatGPT", "description": "Assistente de IA para criação, análise e produtividade.", "url": "https://chatgpt.com/", "type": "externo", "icon": "chat", "active": true },
-  { "id": "plaud", "name": "Plaud", "description": "Gravação, transcrição e organização de conversas.", "url": "https://www.plaud.com.br/login/", "type": "externo", "icon": "audio", "active": true },
-  { "id": "magnific", "name": "Magnific", "description": "Aprimoramento e ampliação de imagens com IA.", "url": "https://www.magnific.com/log-in?client_id=magnific&lang=pt", "type": "externo", "icon": "image", "active": true },
-  { "id": "envato-elements", "name": "Envato Elements", "description": "Recursos criativos, imagens, vídeos e templates.", "url": "https://elements.envato.com/pt-br/sign-in", "type": "externo", "icon": "shapes", "active": true },
-  { "id": "microsoft-365-chat", "name": "Microsoft 365 Chat", "description": "Assistente de IA integrado ao ambiente Microsoft 365.", "url": "https://m365.cloud.microsoft/chat", "type": "externo", "icon": "briefcase", "active": true },
-  { "id": "corrida-dos-campeoes", "name": "Corrida dos Campeões", "description": "Plataforma de performance comercial.", "url": "https://corrida-dos-campeoes.elian.com.br/", "type": "interno", "icon": "trophy", "active": true },
-  { "id": "gerenciador-de-deploys", "name": "Gerenciador de Deploys", "description": "Gestão de ambientes, workloads e implantações.", "url": "https://rancher.elian.com.br/", "type": "interno", "icon": "rocket", "active": true },
-  { "id": "showroom-digital", "name": "Showroom Digital", "description": "Criador de catálogo digital para apresentar produtos e coleções.", "url": "https://showroomdigital.elian.com.br/", "type": "interno", "icon": "store", "active": true },
-  { "id": "briefing-elian", "name": "Briefing Elian", "description": "Dados de coleções para decisões comerciais e de desenvolvimento.", "url": "https://briefing.elian.com.br/", "type": "interno", "icon": "clipboard", "active": true },
-  { "id": "reserva-refeicoes", "name": "Reserva de Refeições", "description": "Reserva de refeições integrada aos fluxos internos do Grupo Elian.", "url": "https://studio.elian.com.br/reserva-refeicao", "type": "interno", "icon": "meal", "active": true }
+  {
+    "id": "agentes-ia",
+    "nome": "Agentes de IA",
+    "descricao": "Agentes especializados para processos e áreas do Grupo Elian.",
+    "url": "https://studio.elian.com.br/agentes-ia",
+    "tipo": "interno",
+    "icone": "robot",
+    "ativo": true
+  },
+  {
+    "id": "elian-studio",
+    "nome": "Elian Studio",
+    "descricao": "Criação de imagens e assistente corporativo.",
+    "url": "https://studio.elian.com.br/",
+    "tipo": "interno",
+    "icone": "sparkles",
+    "ativo": true
+  },
+  {
+    "id": "chatgpt",
+    "nome": "ChatGPT",
+    "descricao": "Assistente de IA para criação, análise e produtividade.",
+    "url": "https://chatgpt.com/",
+    "tipo": "externo",
+    "icone": "chat",
+    "ativo": true
+  },
+  {
+    "id": "plaud",
+    "nome": "Plaud",
+    "descricao": "Gravação, transcrição e organização de conversas.",
+    "url": "https://www.plaud.com.br/login/",
+    "tipo": "externo",
+    "icone": "audio",
+    "ativo": true
+  },
+  {
+    "id": "magnific",
+    "nome": "Magnific",
+    "descricao": "Aprimoramento e ampliação de imagens com IA.",
+    "url": "https://www.magnific.com/log-in?client_id=magnific&lang=pt",
+    "tipo": "externo",
+    "icone": "image",
+    "ativo": true
+  },
+  {
+    "id": "envato-elements",
+    "nome": "Envato Elements",
+    "descricao": "Recursos criativos, imagens, vídeos e templates.",
+    "url": "https://elements.envato.com/pt-br/sign-in",
+    "tipo": "externo",
+    "icone": "shapes",
+    "ativo": true
+  },
+  {
+    "id": "microsoft-365-chat",
+    "nome": "Microsoft 365 Chat",
+    "descricao": "Assistente de IA integrado ao ambiente Microsoft 365.",
+    "url": "https://m365.cloud.microsoft/chat",
+    "tipo": "externo",
+    "icone": "briefcase",
+    "ativo": true
+  },
+  {
+    "id": "corrida-dos-campeoes",
+    "nome": "Corrida dos Campeões",
+    "descricao": "Plataforma de performance comercial.",
+    "url": "https://corrida-dos-campeoes.elian.com.br/",
+    "tipo": "interno",
+    "icone": "trophy",
+    "ativo": true
+  },
+  {
+    "id": "gerenciador-de-deploys",
+    "nome": "Gerenciador de Deploys",
+    "descricao": "Gestão de ambientes, workloads e implantações.",
+    "url": "https://rancher.elian.com.br/",
+    "tipo": "interno",
+    "icone": "rocket",
+    "ativo": true
+  },
+  {
+    "id": "showroom-digital",
+    "nome": "Showroom Digital",
+    "descricao": "Criador de catálogo digital para apresentar produtos e coleções.",
+    "url": "https://showroomdigital.elian.com.br/",
+    "tipo": "interno",
+    "icone": "store",
+    "ativo": true
+  },
+  {
+    "id": "briefing-elian",
+    "nome": "Briefing Elian",
+    "descricao": "Dados de coleções para decisões comerciais e de desenvolvimento.",
+    "url": "https://briefing.elian.com.br/",
+    "tipo": "interno",
+    "icone": "clipboard",
+    "ativo": true
+  },
+  {
+    "id": "reserva-refeicoes",
+    "nome": "Reserva de Refeições",
+    "descricao": "Reserva de refeições integrada aos fluxos internos do Grupo Elian.",
+    "url": "https://studio.elian.com.br/reserva-refeicao",
+    "tipo": "interno",
+    "icone": "meal",
+    "ativo": true
+  },
+  {
+    "id": "7bc1719c-00b6-4880-852e-6cbb84fcf640",
+    "nome": "Portal de Vendas",
+    "descricao": "Um portal utilizado para vendas de roupas de todas as marcas do Grupo Elian",
+    "url": "https://elian.com.br/",
+    "tipo": "externo",
+    "icone": "store",
+    "ativo": true
+  }
 ]

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07162c">
+  <meta name="description" content="Acesse as plataformas digitais do Grupo Elian em um só lugar.">
+  <title>Plataformas | Grupo Elian</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="page-glow page-glow--one" aria-hidden="true"></div>
+  <div class="page-glow page-glow--two" aria-hidden="true"></div>
+
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="{{ url_for('painel_principal') }}" aria-label="Grupo Elian — início">
+        <img src="{{ url_for('static', filename='img/logo-elian.png') }}" alt="Grupo Elian">
+        <span class="brand-title">Plataformas</span>
+      </a>
+      <a class="icon-button settings-trigger" href="{{ url_for('pagina_gerenciamento') }}" aria-label="Gerenciar plataformas" title="Gerenciar plataformas">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 2h4.6l.55 2.35c.55.17 1.07.39 1.55.65l2.12-1.12 3.25 3.25-1.12 2.12c.26.48.48 1 .65 1.55L23.6 11.4v4.6l-2.3.55c-.17.55-.39 1.07-.65 1.55l1.12 2.12-3.25 3.25-2.12-1.12c-.48.26-1 .48-1.55.65L14.3 25.3H9.7l-.55-2.3c-.55-.17-1.07-.39-1.55-.65l-2.12 1.12-3.25-3.25 1.12-2.12c-.26-.48-.48-1-.65-1.55L.4 16v-4.6l2.3-.55c.17-.55.39-1.07.65-1.55L2.23 7.18l3.25-3.25L7.6 5.05c.48-.26 1-.48 1.55-.65L9.7 2Z" transform="translate(0 -1.65) scale(1)"/><circle cx="12" cy="12" r="3.25"/></svg>
+      </a>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="tituloPagina">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span>ECOSSISTEMA DIGITAL</p>
+          <h1 id="tituloPagina">Escolha uma aplicação para começar</h1>
+          <p class="intro-description">Encontre ferramentas de inteligência artificial desenvolvidas ou homologadas no Grupo Elian.</p>
+        </div>
+        <label class="search-box" for="campoBusca">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m16 16 4.2 4.2"></path></svg>
+          <input id="campoBusca" type="search" placeholder="Buscar uma aplicação" autocomplete="off">
+        </label>
+      </section>
+
+      <section class="catalog" aria-label="Catálogo de plataformas">
+        <div class="platform-showcase">
+          <div class="mascot-frame" aria-hidden="true">
+            <img src="{{ url_for('static', filename='img/ani-avatar-elian.png') }}" alt="">
+          </div>
+          <div class="catalog-content">
+            <div class="catalog-scroll">
+              <div class="platform-grid" id="gradePlataformas" aria-live="polite"></div>
+              <div class="empty-state" id="estadoVazio" hidden>
+                <h2>Nenhuma plataforma cadastrada</h2>
+                <p>Adicione uma plataforma pela tela de gerenciamento.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/portal.js') }}"></script>
+</body>
+</html>
